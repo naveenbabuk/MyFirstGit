@@ -18,7 +18,7 @@ public class SupplierConsumer {
 		props.put("bootstrap.servers", "localhost:9092, localhost:9093");
 		props.put("group.id", consumerGroupName);
 		props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer", "SuplierDeSerializer");
+        props.put("value.deserializer", "com.javagain.kafka.SuplierDeSerializer");
 		
 		KafkaConsumer<String, Supplier> consumer = new KafkaConsumer<String, Supplier>(props);
 		
@@ -28,9 +28,12 @@ public class SupplierConsumer {
 			
 			ConsumerRecords<String, Supplier> records = consumer.poll(100);
 			for (ConsumerRecord<String, Supplier> record : records) {
+				System.out.println("**************Supperlier Consumer***************");
 				System.out.println("Supplier id : " + String.valueOf(record.value().getSupplierId()));
 				System.out.println("Supplier Name : " + record.value().getSupplierName());
 				System.out.println("Supplier Start Date : " + record.value().getSupplierStartDate().toString());
+				System.out.println();
+				System.out.println();
 				
 			}
 		}

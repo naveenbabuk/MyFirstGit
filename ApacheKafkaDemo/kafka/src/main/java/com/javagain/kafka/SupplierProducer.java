@@ -18,8 +18,8 @@ public class SupplierProducer {
 		Properties prop = new Properties();
 		
 		prop.put("bootstrap.servers", "localhost:9092, localhost:9093");
-		prop.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-		prop.put("value.serializer", "SuplierSerializer");
+		prop.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
+	    prop.put("value.serializer", "com.javagain.kafka.SupplierSerializer");
 		
 		Producer<String, Supplier> producer = new KafkaProducer <String, Supplier>(prop);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
